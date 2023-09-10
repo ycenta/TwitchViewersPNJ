@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #222323;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    position: absolute;
+    background-image:url('https://i.imgur.com/dK3pS0y.png');
+    background-size:cover;
+    image-rendering: pixelated; 
+
+}
+
+.character-container{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+.pseudo {
+    position: absolute;
+    top: -55px;
+    left: -9px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.walking{
+    animation: rotateStep 2s steps(2) infinite; 
+}
+
+
+@keyframes rotateStep {
+    0% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(-15deg);
+    }
+}
