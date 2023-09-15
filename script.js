@@ -85,6 +85,73 @@ function spawnCharacter() {
     }, 13);
 }
 
+function spawnCharacterInstance(twitchUser = null) {
+    //Create a new character instance (div) and append it to the character container
+    const characterInstance = document.createElement('div');
+    characterInstance.data.currentDirection = 1;
+    characterInstance.classList.add('character');
+    //add random horizontal position
+    characterInstance.style.left = `${Math.random() * 100}%`;
+    characterContainer.appendChild(characterInstance);
+}
+
+function animateCharacterInstance(characterInstance) {
+    // animate the character instance
+    // should move the character instance from left to right, and then from right to left, and so on
+    // should call spawnCharacterInstance() every random interval, but between each interval, it should pause for a random duration, between 0 and 3000ms
+
+    let velocityYInstance = 0;
+    let positionYInstance = 0;
+    let positionXInstance = 0;
+    let directionInstance = 0; // 0 pour s'arrêter, 1 pour droite, -1 pour gauche
+    const gravityInstance = 0.5;
+    let timeCounterInstance = 0; // Compteur de temps
+}
+
+
+function moveLeftInstance(characterInstance, duration) {
+
+    // translate to the left
+    let counter = 0;
+    const interval = setInterval(() => {
+        positionXInstance += 2;
+        counter += 13;
+        characterInstance.style.transform = `translate(${positionXInstance}px, ${positionYInstance}px)`;
+        if (positionXInstance >= window.innerWidth) {
+            clearInterval(interval);
+            removeWalkingAnimation(characterInstance);
+        }
+        if (counter >= duration) {
+            clearInterval(interval);
+            removeWalkingAnimation(characterInstance);
+        }
+    }
+    , 13);
+
+}
+
+function moveRightInstance(characterInstance, duration) {
+    
+    // translate to the right
+    let counter = 0;
+    const interval = setInterval(() => {
+        positionXInstance -= 2;
+        counter += 13;
+        characterInstance.style.transform = `translate(${positionXInstance}px, ${positionYInstance}px)`;
+        if (positionXInstance <= 0) {
+            clearInterval(interval);
+            removeWalkingAnimation(characterInstance);
+        }
+        if (counter >= duration) {
+            clearInterval(interval);
+            removeWalkingAnimation(characterInstance);
+        }
+    }
+    , 13);
+
+}
+
+
 function moveRandomly() {
 
     // should call moveLeft or moveRight every random interval, but between each interval, it should pause for a random duration, between 0 and 3000ms
